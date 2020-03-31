@@ -18,25 +18,25 @@ class App extends Component {
 
   showDealsPage() {
     this.setState({ 
-      ShowDealsPage:  true,
-      ShowSubscriptionPage: false,
-      ShowOneTimeOrder: false
+      showDealsPage:  true,
+      showSubscriptionPage: false,
+      showOneTimeOrder: false
     })
   }
 
   showSubscriptionPage() {
     this.setState({ 
-      ShowDealsPage:  false,
-      ShowSubscriptionPage: true,
-      ShowOneTimeOrder: false
+      showDealsPage:  false,
+      showSubscriptionPage: true,
+      showOneTimeOrder: false
     })
   }
 
   showOneTimeOrderPage() {
     this.setState({ 
-      ShowDealsPage:  false,
-      ShowSubscriptionPage: false,
-      ShowOneTimeOrder: true
+      showDealsPage:  false,
+      showSubscriptionPage: false,
+      showOneTimeOrder: true
     })
   }
 
@@ -48,7 +48,7 @@ class App extends Component {
         title: '1 - 4 Washes a Week',
         loadNumber: 64,
         originalPrice: 28,
-        subscriptionPrice: 19.60
+        subscriptionPrice: null
       },
       {
         id: 2,
@@ -64,27 +64,28 @@ class App extends Component {
         title: '11 - 15 Washes a Week',
         loadNumber: 240,
         originalPrice: 66,
-        subscriptionPrice: 46.20
+        subscriptionPrice: null
       }
     ],
-    ShowDealsPage: true,
-    ShowSubscriptionPage: false,
-    ShowOneTimeOrder: false
+    loadSubscriptionSavings: .3,
+    showDealsPage: true,
+    showSubscriptionPage: false,
+    showOneTimeOrder: false
   }
 
   render () {
-    if (this.state.ShowDealsPage) {
+    if (this.state.showDealsPage) {
       return (
         <div className="Deals-page">
-          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)} loadDeals={this.state.loadDeals} >
+          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)} loadDeals={this.state.loadDeals} loadSubscriptionSavings={this.state.loadSubscriptionSavings}>
           </DealsPage>
         </div>
       );
-    } else if (this.state.ShowSubscriptionPage) {
+    } else if (this.state.showSubscriptionPage) {
       return (
           <SubscriptionPage showDealsPage={() => {this.showDealsPage()}}></SubscriptionPage>
       )
-    } else if (this.state.ShowOneTimeOrder){
+    } else if (this.state.showOneTimeOrder){
       return (
         <OneTimeOrderPage showDealsPage={() => {this.showDealsPage()}}></OneTimeOrderPage>
       )
