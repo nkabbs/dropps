@@ -37,7 +37,7 @@ html, body {
   text-decoration: underline;
   color: #048aff;
   font-size: 22px;
-  margin: 0px 0px 8px 0px;
+  margin: auto;
 }
 
 .Go-back {
@@ -71,4 +71,15 @@ html, body {
   text-align: left;
   border-radius: 5px;
   box-shadow: 0 4px 6px -6px;
+}
+
+.Element {
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.One-time-description {
+ margin-top: 8px;
 }

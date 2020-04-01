@@ -6,10 +6,14 @@ export class SubscriptionPage extends Component {
         return (
             <div className='App-header'>
                 <div className='Subscribe-message'>You selected Subscribe!</div>
-                <div className='Link Go-back' onClick={this.props.showDealsPage.bind(this)}>Go Back</div>
+                <span className='Element Link Go-back' style={this.props.state.highlight ? highlightFontStyle : null} onClick={this.props.showDealsPage.bind(this)}>Go Back</span>
             </div>
         );      
     }  
+}
+
+const highlightFontStyle = {
+    backgroundColor: '#84d6e8'
 }
 
 export default SubscriptionPage    

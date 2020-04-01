@@ -18,26 +18,41 @@ class App extends Component {
 
   showDealsPage() {
     this.setState({ 
-      showDealsPage:  true,
+      showDealsPage: true,
       showSubscriptionPage: false,
       showOneTimeOrder: false
     })
+    this.state.highlightEnabled = false;
   }
 
   showSubscriptionPage() {
     this.setState({ 
-      showDealsPage:  false,
+      showDealsPage: false,
       showSubscriptionPage: true,
       showOneTimeOrder: false
     })
+    this.state.highlightEnabled = false;
   }
 
   showOneTimeOrderPage() {
     this.setState({ 
-      showDealsPage:  false,
+      showDealsPage: false,
       showSubscriptionPage: false,
       showOneTimeOrder: true
     })
+    this.state.highlightEnabled = false;
+  }
+
+  highlightButtons() {
+    var selectedLoadDeal = this.state.loadDeals.filter(loadDeal => loadDeal.selected == true)[0];
+    if (selectedLoadDeal.id === this.state.previouslySelectedDeal && this.state.highlightEnabled) {
+      this.setState({ highlight: true });
+      setTimeout(() => {
+        this.setState({ highlight: false });
+      }, 300);
+    }
+    this.state.previouslySelectedDeal = selectedLoadDeal.id;
+    this.state.highlightEnabled = true;
   }
 
   state = {
@@ -70,28 +85,34 @@ class App extends Component {
     loadSubscriptionSavings: .3,
     showDealsPage: true,
     showSubscriptionPage: false,
-    showOneTimeOrder: false
+    showOneTimeOrder: false,
+    highlight: false,
+    highlightEnabled: true,
+    previouslySelectedDeal: 1
   }
 
   render () {
     if (this.state.showDealsPage) {
       return (
-        <div className="Deals-page">
-          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)} loadDeals={this.state.loadDeals} loadSubscriptionSavings={this.state.loadSubscriptionSavings}>
+        <div className="Deals-page" onClick={() => {this.highlightButtons()}}>
+          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)}>
           </DealsPage>
         </div>
       );
     } else if (this.state.showSubscriptionPage) {
       return (
-          <SubscriptionPage showDealsPage={() => {this.showDealsPage()}}></SubscriptionPage>
+        <div onClick={() => {this.highlightButtons()}}>
+          <SubscriptionPage showDealsPage={() => {this.showDealsPage()}} state={this.state}></SubscriptionPage>
+        </div>
       )
     } else if (this.state.showOneTimeOrder){
       return (
-        <OneTimeOrderPage showDealsPage={() => {this.showDealsPage()}}></OneTimeOrderPage>
+        <div onClick={() => {this.highlightButtons()}}>
+        <OneTimeOrderPage showDealsPage={() => {this.showDealsPage()}} state={this.state}></OneTimeOrderPage>
+        </div>
       )
     }
     return null
-  
   }
 }
 
