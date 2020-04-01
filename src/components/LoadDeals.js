@@ -10,8 +10,4 @@ class LoadDeals extends Component {
     }  
 }
 
-LoadDeals.propTypes = {
-    loadDeals: PropTypes.array.isRequired
-}
-
 export default LoadDeals    

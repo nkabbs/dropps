@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   highlightButtons() {
+    //there will always only be one selected load deal, so we can filter and take the first in the array
     var selectedLoadDeal = this.state.loadDeals.filter(loadDeal => loadDeal.selected == true)[0];
     if (selectedLoadDeal.id === this.state.previouslySelectedDeal && this.state.highlightEnabled) {
       this.setState({ highlight: true });
@@ -94,15 +95,14 @@ class App extends Component {
   render () {
     if (this.state.showDealsPage) {
       return (
-        <div className="Deals-page" onClick={() => {this.highlightButtons()}}>
-          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)}>
-          </DealsPage>
+        <div onClick={() => {this.highlightButtons()}}>
+          <DealsPage showSubscriptionPage={() => {this.showSubscriptionPage()}} showOneTimeOrderPage={() => {this.showOneTimeOrderPage()}} state={this.state} selectLoadDeal={(id) => this.selectLoadDeal(id)} />
         </div>
       );
     } else if (this.state.showSubscriptionPage) {
       return (
         <div onClick={() => {this.highlightButtons()}}>
-          <SubscriptionPage showDealsPage={() => {this.showDealsPage()}} state={this.state}></SubscriptionPage>
+          <SubscriptionPage showDealsPage={() => {this.showDealsPage()}} state={this.state} />
         </div>
       )
     } else if (this.state.showOneTimeOrder){

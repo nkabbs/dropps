@@ -8,9 +8,10 @@ export class DealsPage extends Component {
         var formattedOriginalPrice = Intl.NumberFormat('US-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(selectedLoadDeal.originalPrice) + '$';
         var formattedSubscriptionPrice = Intl.NumberFormat('US-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(selectedLoadDeal.subscriptionPrice != null ? selectedLoadDeal.subscriptionPrice : selectedLoadDeal.originalPrice * (1 - this.props.state.loadSubscriptionSavings));
         const highlight = this.props.state.highlight;
+        
         return (
-            <div>
-                <header className="App-header">
+            <div className='Deals-page'>
+                <header className='App-header'>
                     <b>How Often Do You Wash?</b>
                 </header>
                 <LoadDeals highlight={highlight} loadDeals={this.props.state.loadDeals} selectLoadDeal={this.props.selectLoadDeal.bind(this)}/>
