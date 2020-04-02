@@ -72,7 +72,7 @@ html, body {
   text-align: left;
   border-radius: 5px;
   box-shadow: 0 4px 6px -6px;
-  background-color: #fff !important;
+  background-color: #fff;
 }
 
 .Btn-element {
