@@ -54,7 +54,7 @@ html, body {
 }
 
 .Guarantee {
-  font-size: small;
+  font-size: small; 
   margin: 5px 0px 20px 0px;
 }
 
@@ -72,9 +72,10 @@ html, body {
   text-align: left;
   border-radius: 5px;
   box-shadow: 0 4px 6px -6px;
+  background-color: '#fff';
 }
 
-.Element {
+.Btn-element {
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -83,4 +84,16 @@ html, body {
 
 .One-time-description {
  margin-top: 8px;
+}
+
+.Highlight-font {
+  color: #84d6e8;
+}
+
+.Highlight-background {
+  background-color: #84d6e8;
+}
+
+.Selected-load-deal {
+  background-color: #e3f3fb !important;
 }

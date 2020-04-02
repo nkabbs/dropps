@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import LoadDealItem from './LoadDealItem';
-import PropTypes from 'prop-types';
 
 class LoadDeals extends Component {
     render() {

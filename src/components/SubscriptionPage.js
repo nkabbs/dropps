@@ -3,17 +3,18 @@ import './../App.css'
 
 export class SubscriptionPage extends Component {
     render() {
+        var goBackClasses = 'Btn-element Link Go-back'
+        if (this.props.state.highlight) {
+            goBackClasses += ' Highlight-background'
+        }
+
         return (
             <div className='App-header'>
                 <div className='Subscribe-message'>You selected Subscribe!</div>
-                <span className='Element Link Go-back' style={this.props.state.highlight ? highlightFontStyle : null} onClick={this.props.showDealsPage.bind(this)}>Go Back</span>
+                <span className={goBackClasses} onClick={this.props.showDealsPage.bind(this)}>Go Back</span>
             </div>
         );      
     }  
-}
-
-const highlightFontStyle = {
-    backgroundColor: '#84d6e8'
 }
 
 export default SubscriptionPage    
