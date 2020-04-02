@@ -1,3 +1,12 @@
+To run the app, follow these steps:
+
+1) If you don't have Node.js installed, go to https://nodejs.org/en/ and download and install the most current version available. In the terminal/command prompt, run "npm install" (no quotes).
+2) Clone the repository into a local folder.
+3) Open up the newly created folder in the terminal/command prompt, and enter the command "npm start" (no quotes). This should pull up an instance of the app on your browser.
+4) To show the mobile version, open developer tools (F12) and select the mobile icon.
+
+Below is the README.md automatically included with projects created through Create_React_App
+----------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
